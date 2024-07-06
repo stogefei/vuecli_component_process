@@ -1,18 +1,13 @@
 <template>
-    <el-popover
+    <a-popover
        v-model="showPopover"
        trigger="manual"
        :visibleArrow="false"
-       placement="right-start"
-       popperClass="menue-popover"
-       :appendToBody="true"
-      :popperOptions="{
-          boundariesElement: 'viewport',
-          removeOnDestroy: true
-      }"
-      :style="currentPosition"
-        >
-        <div class="bpmn-context-menu">
+       placement="rightBottom"
+       overlayClassName="menue-popover"
+       :destroyTooltipOnHide="true"
+       :style="currentPosition">
+        <div slot="content" class="bpmn-context-menu">
             <div class="context-menu_header">{{ contextMenuTitle }}</div>
               <div class="context-menu_body">
                 <div v-for="item in currentReplaceOptions"
@@ -25,11 +20,10 @@
               </div>
             </div>
         </div>
-        <span slot="reference"></span>
-   </el-popover>
+   </a-popover>
 </template>
 <script>
-import { Popover } from 'element-ui'
+import { Popover } from 'ant-design-vue'
 import EventEmitter from '@/utils/EventEmitter'
 import { customTranslate } from '@/additional-modules/Translate'
 import BpmnReplaceOptions from '@/utils/BpmnReplaceOptions'
@@ -38,7 +32,7 @@ import contextMenuActions from './contextMenuActions';
 export default {
   name: "ContextMenu",
   components: {
-    ElPopover: Popover
+    APopover: Popover
   },
   data() {
     return {

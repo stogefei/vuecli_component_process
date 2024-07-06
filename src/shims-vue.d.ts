@@ -20,5 +20,4 @@ declare module "*.svg" {
 
 declare module 'bpmn-js-color-picker';
 declare module 'vue-property-decorator';
-declare module 'element-ui';
 // declare module 'pinia';

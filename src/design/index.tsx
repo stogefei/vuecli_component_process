@@ -1,5 +1,5 @@
 import { defineComponent, ref, computed} from 'vue';
-import { Message }from 'element-ui';
+import { message }from 'ant-design-vue';
 import Toool from'./toolbar/index';
 import ContextMenu from '@/components/ContextMenu/index.vue';
 import Panel from '@/components/panel/index.vue';
@@ -20,7 +20,7 @@ const Bpmn = defineComponent({
   },
   // inheritAttrs: false,
   setup() {
-    window.__messageBox = Message;
+    window.__messageBox = message;
     const processXml = ref<string | undefined>(undefined)
     const editorSettings = ref<EditorSettings>({ ...defaultSettings })
 

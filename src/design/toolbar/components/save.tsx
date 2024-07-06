@@ -1,17 +1,16 @@
 import { defineComponent } from 'vue'
-import { Button } from 'element-ui'
+import { Button } from 'ant-design-vue'
 import { pinia } from '@/store/index'
 import modeler from '@/store/modeler'
 
 const Exports = defineComponent({
   name: 'SaveTools',
   components: {
-    EButton: Button,
+    AButton: Button,
   },
   setup() {
     const modelerStore = modeler(pinia)
     const handleSave = () => {
-        console.log(1111);
         console.log(modelerStore, 'modelerStore')
     }
     return {
@@ -20,9 +19,9 @@ const Exports = defineComponent({
   },
   render () {
     return (
-        <e-button onClick={this.handleSave} size="mini" type="primary" icon="el-icon-document">
+        <a-button onClick={this.handleSave} size="small" type="primary" icon="save">
           <span>保存</span>
-        </e-button>
+        </a-button>
     )
   }
 })

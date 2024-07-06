@@ -7,10 +7,10 @@
     bpmn v14
 
 ### 支持ts tsx语法
-    支持 jsx语法 render函数 
+    支持 jsx语法 render函数
 
 ### 启动
-    pnpm i 
+    pnpm i
 
     yarn run build:dev
 
@@ -37,6 +37,6 @@
 
 ## Todo
 
- [] 替换elment-ui
+ [X] 替换elment-ui
  [] 替换ant-vue @h3/antd
  [] 添加面板属性

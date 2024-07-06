@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { Button, ButtonGroup, Popover } from 'element-ui'
+import { Button, Tooltip } from 'ant-design-vue'
 import LucideIcon from '@/components/common/LucideIcon.vue'
 import modeler from '@/store/modeler'
 import {pinia} from '@/store/index'
@@ -7,9 +7,9 @@ import {pinia} from '@/store/index'
 const ExternalTools = defineComponent({
   name: 'ExternalTools',
   components: {
-    EButton: Button,
-    EButtonGroup: ButtonGroup,
-    ElPopover: Popover,
+    AButton: Button,
+    AButtonGroup: Button.Group,
+    ATooltip: Tooltip,
     LucideIcon,
   },
   setup() {
@@ -27,13 +27,13 @@ const ExternalTools = defineComponent({
   },
   render () {
     return(
-      <e-button-group>
-          <e-button size="mini" onClick={() => this.minimapToggle()}>
-            <el-popover title="展开/收起小地图" popper-class="tool-popper" trigger="hover" >
-            <lucide-icon slot="reference" name="Map" size={12}/>
-            </el-popover>
-          </e-button>
-      </e-button-group>
+      <a-button-group>
+        <a-tooltip title="展开/收起小地图" popper-class="tool-popper" trigger="hover" >
+          <a-button size="small" onClick={() => this.minimapToggle()}>
+            <lucide-icon name="Map" size={12}/>
+          </a-button>
+        </a-tooltip>
+      </a-button-group>
     )
   }
 })

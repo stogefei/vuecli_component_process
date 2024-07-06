@@ -7,16 +7,13 @@
             <bpmn-icon :name="bpmnIconName" />
             <p>{{ translateElment(currentElementType || "Process") }}</p>
         </div>
-        <el-collapse :value="['base-info']">
-          <!-- <component  :is="cp" v-for="cp in renderComponents" :key="cp.name" /> -->
-          <component :is="configure" v-if="configure" />
-        </el-collapse>
+       <component :is="configure" v-if="configure" />
       </div>
 </template>
 
 <script>
 import { markRaw} from 'vue';
-import {Collapse} from "element-ui";
+import {Collapse} from "ant-design-vue";
 import debounce from 'lodash.debounce'
 import Translate from 'diagram-js/lib/i18n/translate'
 
@@ -42,7 +39,6 @@ export default {
     components: {
       BpmnIcon,
       LucideIcon: LucideIcon,
-      ElCollapse: Collapse,
     },
     data() {
       return {

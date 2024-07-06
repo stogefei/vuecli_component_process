@@ -1,5 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator';
-import { ButtonGroup } from 'element-ui';
+import { Button } from 'ant-design-vue';
 import Imports from './components/Imports';
 import Exports from './components/exports';
 import Previews from './components/Previews';
@@ -12,8 +12,8 @@ const prefixCls: string = 'cloudpivot-bpmn-tool';
 @Component({
   name: prefixCls,
   components: {
-    EButtonGroup: ButtonGroup,
-    ImportTools: Imports,
+    AButtonGroup: Button.Group,
+    Imports: Imports,
     Save: Save,
     Exports: Exports,
     Previews: Previews,
@@ -27,12 +27,12 @@ export default class Toool extends Vue {
   render () {
     return (
       <div class={prefixCls}>
-        <e-button-group>
+        <a-button-group>
           <save/>
-          <exports/>
+          <imports/>
           <exports/>
           <previews/>
-        </e-button-group>
+        </a-button-group>
         <aligns/>
         <scales/>
         <commands/>

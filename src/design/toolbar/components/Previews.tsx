@@ -4,13 +4,13 @@ import BpmnModdle from 'bpmn-moddle';
 import modeler from '@/store/modeler';
 import {pinia} from '@/store/index';
 import hljs from '@/highlight/index';
-import { Button, Popover, Dialog } from 'element-ui'
+import { Button, Popover, Modal } from 'ant-design-vue'
 const Previews = defineComponent({
   name: 'PreviewTools',
   components: {
-    EButton: Button,
-    ElPopover: Popover,
-    ElDialog: Dialog,
+    AButton: Button,
+    APopover: Popover,
+    AModal: Modal,
   },
   setup() {
     const codeString = ref<any>();
@@ -33,6 +33,7 @@ const Previews = defineComponent({
         codeString.value = xml;
         codeLanguage.value = 'xml';
         codeModelVisible.value = true;
+        open();
       } catch (e) {
         window.__messageBox.error((e as Error).message || (e as string))
       }
@@ -52,11 +53,13 @@ const Previews = defineComponent({
       codeLanguage.value = 'json';
       codeString.value = JSON.stringify(jsonStr, null, 2);;
       codeModelVisible.value = true
+      open();
     }
 
     const open = async () => {
       await nextTick()
       if(preRef.value) {
+        console.log(111)
         hljs.highlightElement(preRef.value)
       }
     }
@@ -80,24 +83,22 @@ const Previews = defineComponent({
 
   render () {
     return (
-      <e-button size="mini" type="primary" icon="el-icon-view">
-        <span onClick={this.openXMLPreviewModel}>
-            预览
-          </span>
-        <el-dialog
-          onClose={this.close}
-          onOpen={this.open}
+      <a-button size="small" type="primary" icon="file" onClick={this.openXMLPreviewModel}>
+        预览
+        <a-modal
+          onCancel={this.close}
           title="预览文件"
+          destroyOnClose
+          footer={null}
           visible={this.codeModelVisible}
-          width="72vw"
-          append-to-body destroy-on-close>
+          width="72vw">
           <div class="preview-model">
             <pre>
               <code id={this.codeLanguage} ref='preRef' class={this.codeLanguage}>{this.codeString}</code>
             </pre>
           </div>
-        </el-dialog>
-      </e-button>
+        </a-modal>
+      </a-button>
     )
   }
 })

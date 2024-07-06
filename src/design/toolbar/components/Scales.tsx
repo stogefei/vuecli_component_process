@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { Button, ButtonGroup, Popover } from 'element-ui'
+import { Button, Tooltip } from 'ant-design-vue'
 import LucideIcon from '@/components/common/LucideIcon.vue'
 import EventEmitter from '@/utils/EventEmitter'
 import type Modeler from 'bpmn-js/lib/Modeler'
@@ -9,9 +9,9 @@ import type Canvas from 'diagram-js/lib/core/Canvas'
 const Scales = defineComponent({
   name: 'ScaleTools',
   components: {
-    EButton: Button,
-    EButtonGroup: ButtonGroup,
-    ElPopover: Popover,
+    AButton: Button,
+    AButtonGroup: Button.Group,
+    ATooltip: Tooltip,
     LucideIcon,
   },
   setup() {
@@ -52,23 +52,23 @@ const Scales = defineComponent({
   },
   render () {
     return(
-      <e-button-group>
-          <e-button size="mini" onClick={() => this.zoomOut()}>
-            <el-popover popper-class="tool-popper" trigger="hover" title="放大视图">
-            <lucide-icon slot="reference" name="ZoomOut" size={12}/>
-            </el-popover>
-          </e-button>
-          <e-button size="mini" onClick={() => this.zoomReset('fit-viewport')}>
+      <a-button-group>
+        <a-tooltip trigger="hover" title="放大视图">
+          <a-button size="small" onClick={() => this.zoomOut()}>
+            <lucide-icon name="ZoomOut" size={12}/>
+          </a-button>
+        </a-tooltip>
+          <a-button size="small" onClick={() => this.zoomReset('fit-viewport')}>
             <span style="text-align: center; display: inline-block; width: 40px;height:14px">
               {Math.floor(this.currentScale * 10) * 10 + '%'}
             </span>
-          </e-button>
-          <e-button size="mini" onClick={() => this.zoomIn()}>
-            <el-popover popper-class="tool-popper" trigger="hover" title="缩小视图">
-            <lucide-icon slot="reference" name="ZoomIn" size={12} />
-            </el-popover>
-          </e-button>
-      </e-button-group>
+          </a-button>
+        <a-tooltip trigger="hover" title="缩小视图">
+          <a-button size="small" onClick={() => this.zoomIn()}>
+            <lucide-icon name="ZoomIn" size={12} />
+          </a-button>
+        </a-tooltip>
+      </a-button-group>
     )
   }
 })

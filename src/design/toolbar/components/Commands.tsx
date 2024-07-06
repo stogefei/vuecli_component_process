@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { Button, ButtonGroup, Popover } from 'element-ui'
+import { Button, Tooltip } from 'ant-design-vue'
 import EventEmitter from '@/utils/EventEmitter'
 import type Modeler from 'bpmn-js/lib/Modeler'
 import type CommandStack from 'diagram-js/lib/command/CommandStack'
@@ -9,9 +9,9 @@ import LucideIcon from '@/components/common/LucideIcon.vue'
 const Commands = defineComponent({
   name: 'CommandTools',
   components: {
-    EButton: Button,
-    EButtonGroup: ButtonGroup,
-    ElPopover: Popover,
+    AButton: Button,
+    AButtonGroup: Button.Group,
+    ATooltip: Tooltip,
     LucideIcon,
   },
   setup() {
@@ -42,23 +42,23 @@ const Commands = defineComponent({
   },
   render () {
     return (
-      <e-button-group>
-        <e-button size="mini" onClick={this.undo}>
-          <el-popover popper-class="tool-popper" title="撤销" trigger="hover">
-            <lucide-icon slot="reference" name="Undo2" size={12}/>
-          </el-popover>
-        </e-button>
-        <e-button size="mini" onClick={this.redo}>
-          <el-popover popper-class="tool-popper" title="重做" trigger="hover">
-              <lucide-icon slot="reference" name="Redo2" size={12}/>
-            </el-popover>
-        </e-button>
-        <e-button size="mini" onClick={this.restart}>
-          <el-popover popper-class="tool-popper" trigger="hover" title="擦除重做">
-          <lucide-icon slot="reference" name="Eraser" size={12}/>
-          </el-popover>
-        </e-button>
-    </e-button-group>
+      <a-button-group>
+        <a-tooltip title="撤销" trigger="hover">
+          <a-button size="small" onClick={this.undo}>
+              <lucide-icon name="Undo2" size={12}/>
+          </a-button>
+        </a-tooltip>
+        <a-tooltip title="重做" trigger="hover">
+          <a-button size="small" onClick={this.redo}>
+            <lucide-icon name="Redo2" size={12}/>
+          </a-button>
+        </a-tooltip>
+        <a-tooltip trigger="hover" title="擦除重做">
+          <a-button size="small" onClick={this.restart}>
+            <lucide-icon name="Eraser" size={12}/>
+          </a-button>
+        </a-tooltip>
+    </a-button-group>
     )
   }
 })

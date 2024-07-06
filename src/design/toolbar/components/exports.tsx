@@ -1,5 +1,5 @@
 import { defineComponent, VNodeData } from 'vue'
-import { Popover, Button } from 'element-ui'
+import { Popover, Button } from 'ant-design-vue'
 import { downloadFile, setEncoded } from '@/utils/files'
 import { pinia } from '@/store/index'
 import modeler from '@/store/modeler'
@@ -7,8 +7,8 @@ import modeler from '@/store/modeler'
 const Exports = defineComponent({
   name: 'ExportTools',
   components: {
-    EButton: Button,
-    EPopover: Popover,
+    AButton: Button,
+    APopover: Popover,
   },
   setup() {
     const modelerStore = modeler(pinia)
@@ -61,25 +61,25 @@ const Exports = defineComponent({
   },
   render () {
     const content = (<div class="button-list_column">
-      <e-button size="mini" plain type="primary" onClick={this.downloadProcessAsBpmn}>
+      <a-button size="small" plain type="primary" onClick={this.downloadProcessAsBpmn}>
         导出BPMN
-      </e-button>
-      <e-button size="mini" plain type="primary" onClick={this.downloadProcessAsXml}>
+      </a-button>
+      <a-button size="small" plain type="primary" onClick={this.downloadProcessAsXml}>
         导出为XML
-      </e-button>
-      <e-button size="mini" plain type="primary" onClick={this.downloadProcessAsSvg}>
+      </a-button>
+      <a-button size="small" plain type="primary" onClick={this.downloadProcessAsSvg}>
         导出为SVG
-      </e-button>
+      </a-button>
     </div>);
     return (
-        <e-button size="mini" slot="reference" type="primary" icon="el-icon-download">
-          <e-popover popper-class="tool-popper" trigger="hover">
-          <span slot="reference">
-            <span> 导出</span>
-          </span>
+        <a-popover trigger="hover">
+          <a-button size="small" type="primary" icon="export">
+              导出
+          </a-button>
+          <template slot="content">
             {content}
-          </e-popover>
-        </e-button>
+          </template>
+        </a-popover>
     )
   }
 })

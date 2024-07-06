@@ -1,5 +1,5 @@
 import { computed, ComputedRef, defineComponent, h } from 'vue'
-import { Button, ButtonGroup, Popover, Icon } from 'element-ui'
+import { Button, Tooltip, Icon } from 'ant-design-vue'
 import Modeler from 'bpmn-js/lib/Modeler'
 import Selection from 'diagram-js/lib/features/selection/Selection'
 import Modeling from 'bpmn-js/lib/features/modeling/Modeling.js'
@@ -9,10 +9,10 @@ import LucideIcon from '@/components/common/LucideIcon.vue'
 const Aligns = defineComponent({
   name: 'AlignTools',
   components: {
-    EButton: Button,
-    EButtonGroup: ButtonGroup,
-    ElPopover: Popover,
-    EIcon: Icon,
+    AButton: Button,
+    AButtonGroup: Button.Group,
+    ATooltip: Tooltip,
+    AIcon: Icon,
     LucideIcon,
   },
   setup() {
@@ -54,17 +54,17 @@ const Aligns = defineComponent({
   },
   render () {
     return(
-      <e-button-group>
+      <a-button-group>
         {this.buttons.map((item) => {
           return (
-            <e-button size="mini" onClick={() => this.alignElements(item.key)}>
-              <el-popover popper-class="tool-popper" trigger="hover" title={item.name}>
-                <lucide-icon  slot="reference" name={item.icon} size={12} />
-              </el-popover>
-            </e-button>
+              <a-tooltip overlayClassName="tool-popper" trigger="hover" title={item.name}>
+                <a-button size="small" onClick={() => this.alignElements(item.key)}>
+                    <lucide-icon name={item.icon} size={12} />
+                </a-button>
+              </a-tooltip>
           )
         })}
-      </e-button-group>
+      </a-button-group>
     )
   }
 })

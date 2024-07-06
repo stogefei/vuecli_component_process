@@ -1,12 +1,12 @@
 import { defineComponent, ref } from 'vue'
-import { Button } from 'element-ui';
+import { Button } from 'ant-design-vue';
 import { pinia } from '@/store/index'
 import modeler from '@/store/modeler'
 
 const Imports = defineComponent({
   name: 'ImportTools',
   components: {
-    EButton: Button,
+    AButton: Button,
   },
   setup() {
     const modelerStore = modeler(pinia)
@@ -37,7 +37,7 @@ const Imports = defineComponent({
   },
   render () {
     return (
-        <e-button size="mini" type="primary" icon="el-icon-folder" onClick={this.openImportWindow}>
+        <a-button size="small" type="primary" icon="folder" onClick={this.openImportWindow}>
           打开
           <input
           type="file"
@@ -45,7 +45,7 @@ const Imports = defineComponent({
           style="display: none"
           accept=".xml,.bpmn"
           onChange={this.changeImportFile}></input>
-        </e-button>
+        </a-button>
     )
   }
 })

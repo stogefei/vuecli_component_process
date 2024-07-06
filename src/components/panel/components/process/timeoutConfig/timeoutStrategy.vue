@@ -12,7 +12,6 @@
     </div>
     <div class="strategy-row">
       <div class="row-title">超时后处理</div>
-      <a-date-picker />
       <a-select
         v-model="timeoutConfig.timeoutStrategy"
         placeholder="请选择"

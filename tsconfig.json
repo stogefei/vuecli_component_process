@@ -12,6 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "lib/types",
+    "outDir": "./lib", // 输出目录
     "baseUrl": "./",
     "types": [
       "webpack-env"
