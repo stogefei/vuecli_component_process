@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="demo-home">
+    <bpmn/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
+// import Bpmn from '../../dist/index';
+import Bpmn from '../../lib/bpmn.umd';
 @Component({
   components: {
-    HelloWorld,
+    Bpmn,
   },
 })
 export default class HomeView extends Vue {}
 </script>
+<style>
+/* @import '../../lib/bpmn.css'; */
+@import '../../lib/css/main.css';
+</style>

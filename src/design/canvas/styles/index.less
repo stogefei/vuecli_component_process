@@ -1,0 +1,45 @@
+
+.cloudpivot-bpmn {
+  height: 100%;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  >span {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    position: fixed;
+  }
+  &.designer-with-image > .main-content .designer {
+    background-repeat: no-repeat !important;
+    // background-image: url("/04.jpg") !important;
+    background-size: cover;
+  }
+  .main-content {
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    .designer {
+      flex: 1;
+    }
+  }
+  .bjs-powered-by{
+    display: none !important;
+  }
+  .djs-minimap {
+    left: 15px;
+    bottom: 10px;
+    top: unset;
+    right: unset;
+  }
+  .djs-minimap {
+    .viewport-dom {
+      border: solid 2px #0095ff;
+    }
+  }
+}

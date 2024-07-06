@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "types": [
       "webpack-env"
     ],
