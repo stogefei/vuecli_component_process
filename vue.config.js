@@ -9,13 +9,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: true,
   publicPath: "./",
-  // outputDir: "../",
   assetsDir: "./",
   css: {
-    extract: process.env.NODE_ENV === 'development' ? false : {
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css'
-    },
     loaderOptions: {
       css: {
         modules: {
@@ -54,7 +49,7 @@ module.exports = defineConfig({
     ],
   },
   chainWebpack: (config) => {
-    //  const filename = `[name].[ext]`
+     const filename = `[name].[ext]`
       // 更改字体的输出路径
       config.module
       .rule("fonts")
@@ -62,7 +57,7 @@ module.exports = defineConfig({
       .set("type", "asset/resource")
       .set("generator", {
         publicPath:'../',
-        filename: 'font/[name][ext]',
+        filename: 'font/' + filename,
       });
       // 更改图片的输出路径
       config.module
@@ -71,15 +66,16 @@ module.exports = defineConfig({
       .set("type", "asset/resource")
       .set("generator", {
         publicPath:'../',
-        filename: 'img/[name][ext]',
+        filename: 'img/' + filename,
       });
+      // 更改svg的输出路径
       config.module
       .rule("svg")
       .test(/\.(svg)(\?.*)?$/)
       .set("type", "asset/resource")
       .set("generator", {
         publicPath:'../',
-        filename: 'img/[name][ext]',
+        filename: 'img/' + filename,
       });
   }
 })

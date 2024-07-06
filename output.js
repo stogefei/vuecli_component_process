@@ -1,9 +1,3 @@
-[
-  {
-    filename: 'css/[name].[contenthash:8].css',
-    chunkFilename: 'css/[name].[contenthash:8].css'
-  }
-] ag
 {
   mode: 'development',
   context: '/Users/aofeizhu/bpmn-project/vue_component_core',
@@ -11,7 +5,7 @@
     hashFunction: 'xxhash64',
     path: '/Users/aofeizhu/bpmn-project/vue_component_core/dist',
     filename: 'js/[name].js',
-    publicPath: '../',
+    publicPath: '',
     chunkFilename: 'js/[name].js'
   },
   resolve: {
@@ -40,17 +34,17 @@
     modules: [
       'node_modules',
       '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules',
-      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-service@5.0.8_oi6gni4mbx65zxrlkxfyvpnite/node_modules/@vue/cli-service/node_modules'
+      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-service@5.0.8_xe4npu5m3lz5uayixplpgnrcoy/node_modules/@vue/cli-service/node_modules'
     ]
   },
   resolveLoader: {
     modules: [
-      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-plugin-typescript@5.0.8_7tv3dvral2be6g4s2g7danwmge/node_modules/@vue/cli-plugin-typescript/node_modules',
+      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-plugin-typescript@5.0.8_u5xkoxwbxlaokl3bmqqll2rjfe/node_modules/@vue/cli-plugin-typescript/node_modules',
       '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-plugin-babel@5.0.8_x2swguav2dw6raoqpp7dhkszkq/node_modules/@vue/cli-plugin-babel/node_modules',
-      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-service@5.0.8_oi6gni4mbx65zxrlkxfyvpnite/node_modules/@vue/cli-service/lib/config/vue-loader-v15-resolve-compat',
+      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-service@5.0.8_xe4npu5m3lz5uayixplpgnrcoy/node_modules/@vue/cli-service/lib/config/vue-loader-v15-resolve-compat',
       'node_modules',
       '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules',
-      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-service@5.0.8_oi6gni4mbx65zxrlkxfyvpnite/node_modules/@vue/cli-service/node_modules'
+      '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/@vue+cli-service@5.0.8_xe4npu5m3lz5uayixplpgnrcoy/node_modules/@vue/cli-service/node_modules'
     ]
   },
   module: {
@@ -69,7 +63,7 @@
         use: [
           /* config.module.rule('vue').use('vue-loader') */
           {
-            loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-loader@15.11.1_526zd27ytvz6az6e6fjqep65g4/node_modules/vue-loader/lib/index.js',
+            loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-loader@15.11.1_rcwajjadz2z472ihhbdfyutj2a/node_modules/vue-loader/lib/index.js',
             options: {
               compilerOptions: {
                 whitespace: 'condense'
@@ -118,15 +112,17 @@
         test: /\.(svg)(\?.*)?$/,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name].[hash:8][ext]'
+          publicPath: '../',
+          filename: 'img/[name][ext]'
         }
       },
       /* config.module.rule('images') */
       {
         test: /\.(png|jpe?g|gif|webp|avif)(\?.*)?$/,
-        type: 'asset',
+        type: 'asset/resource',
         generator: {
-          filename: 'img/[name].[hash:8][ext]'
+          publicPath: '../',
+          filename: 'img/[name][ext]'
         }
       },
       /* config.module.rule('media') */
@@ -142,6 +138,7 @@
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         type: 'asset/resource',
         generator: {
+          publicPath: '../',
           filename: 'font/[name][ext]'
         }
       },
@@ -153,11 +150,12 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('css').oneOf('vue-modules').use('extract-css-loader') */
+              /* config.module.rule('css').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('css').oneOf('vue-modules').use('css-loader') */
@@ -176,12 +174,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -190,11 +183,12 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('css').oneOf('vue').use('extract-css-loader') */
+              /* config.module.rule('css').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('css').oneOf('vue').use('css-loader') */
@@ -213,12 +207,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -227,11 +216,12 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('css').oneOf('normal-modules').use('extract-css-loader') */
+              /* config.module.rule('css').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('css').oneOf('normal-modules').use('css-loader') */
@@ -250,12 +240,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -263,11 +248,12 @@
           /* config.module.rule('css').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('css').oneOf('normal').use('extract-css-loader') */
+              /* config.module.rule('css').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('css').oneOf('normal').use('css-loader') */
@@ -286,12 +272,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -306,11 +287,12 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('postcss').oneOf('vue-modules').use('extract-css-loader') */
+              /* config.module.rule('postcss').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('postcss').oneOf('vue-modules').use('css-loader') */
@@ -329,12 +311,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -343,11 +320,12 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('postcss').oneOf('vue').use('extract-css-loader') */
+              /* config.module.rule('postcss').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('postcss').oneOf('vue').use('css-loader') */
@@ -366,12 +344,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -380,11 +353,12 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('postcss').oneOf('normal-modules').use('extract-css-loader') */
+              /* config.module.rule('postcss').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('postcss').oneOf('normal-modules').use('css-loader') */
@@ -403,12 +377,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -416,11 +385,12 @@
           /* config.module.rule('postcss').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('postcss').oneOf('normal').use('extract-css-loader') */
+              /* config.module.rule('postcss').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('postcss').oneOf('normal').use('css-loader') */
@@ -439,12 +409,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               }
             ]
@@ -459,11 +424,12 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('scss').oneOf('vue-modules').use('extract-css-loader') */
+              /* config.module.rule('scss').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('scss').oneOf('vue-modules').use('css-loader') */
@@ -482,12 +448,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('scss').oneOf('vue-modules').use('sass-loader') */
@@ -503,11 +464,12 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('scss').oneOf('vue').use('extract-css-loader') */
+              /* config.module.rule('scss').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('scss').oneOf('vue').use('css-loader') */
@@ -526,12 +488,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('scss').oneOf('vue').use('sass-loader') */
@@ -547,11 +504,12 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('scss').oneOf('normal-modules').use('extract-css-loader') */
+              /* config.module.rule('scss').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('scss').oneOf('normal-modules').use('css-loader') */
@@ -570,12 +528,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('scss').oneOf('normal-modules').use('sass-loader') */
@@ -590,11 +543,12 @@
           /* config.module.rule('scss').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('scss').oneOf('normal').use('extract-css-loader') */
+              /* config.module.rule('scss').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('scss').oneOf('normal').use('css-loader') */
@@ -613,12 +567,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('scss').oneOf('normal').use('sass-loader') */
@@ -640,11 +589,12 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('sass').oneOf('vue-modules').use('extract-css-loader') */
+              /* config.module.rule('sass').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('sass').oneOf('vue-modules').use('css-loader') */
@@ -663,12 +613,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('sass').oneOf('vue-modules').use('sass-loader') */
@@ -687,11 +632,12 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('sass').oneOf('vue').use('extract-css-loader') */
+              /* config.module.rule('sass').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('sass').oneOf('vue').use('css-loader') */
@@ -710,12 +656,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('sass').oneOf('vue').use('sass-loader') */
@@ -734,11 +675,12 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('sass').oneOf('normal-modules').use('extract-css-loader') */
+              /* config.module.rule('sass').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('sass').oneOf('normal-modules').use('css-loader') */
@@ -757,12 +699,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('sass').oneOf('normal-modules').use('sass-loader') */
@@ -780,11 +717,12 @@
           /* config.module.rule('sass').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('sass').oneOf('normal').use('extract-css-loader') */
+              /* config.module.rule('sass').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('sass').oneOf('normal').use('css-loader') */
@@ -803,12 +741,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('sass').oneOf('normal').use('sass-loader') */
@@ -833,11 +766,12 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('less').oneOf('vue-modules').use('extract-css-loader') */
+              /* config.module.rule('less').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('less').oneOf('vue-modules').use('css-loader') */
@@ -856,17 +790,12 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('less').oneOf('vue-modules').use('less-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1/node_modules/less-loader/dist/cjs.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1+webpack@5.92.1/node_modules/less-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   lessOptions: {
@@ -880,11 +809,12 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('less').oneOf('vue').use('extract-css-loader') */
+              /* config.module.rule('less').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('less').oneOf('vue').use('css-loader') */
@@ -903,17 +833,12 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('less').oneOf('vue').use('less-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1/node_modules/less-loader/dist/cjs.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1+webpack@5.92.1/node_modules/less-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   lessOptions: {
@@ -927,11 +852,12 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('less').oneOf('normal-modules').use('extract-css-loader') */
+              /* config.module.rule('less').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('less').oneOf('normal-modules').use('css-loader') */
@@ -950,17 +876,12 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('less').oneOf('normal-modules').use('less-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1/node_modules/less-loader/dist/cjs.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1+webpack@5.92.1/node_modules/less-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   lessOptions: {
@@ -973,11 +894,12 @@
           /* config.module.rule('less').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('less').oneOf('normal').use('extract-css-loader') */
+              /* config.module.rule('less').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('less').oneOf('normal').use('css-loader') */
@@ -996,17 +918,12 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('less').oneOf('normal').use('less-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1/node_modules/less-loader/dist/cjs.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/less-loader@8.1.1_less@3.13.1+webpack@5.92.1/node_modules/less-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   lessOptions: {
@@ -1026,11 +943,12 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('stylus').oneOf('vue-modules').use('extract-css-loader') */
+              /* config.module.rule('stylus').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('stylus').oneOf('vue-modules').use('css-loader') */
@@ -1049,12 +967,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('stylus').oneOf('vue-modules').use('stylus-loader') */
@@ -1070,11 +983,12 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('stylus').oneOf('vue').use('extract-css-loader') */
+              /* config.module.rule('stylus').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('stylus').oneOf('vue').use('css-loader') */
@@ -1093,12 +1007,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('stylus').oneOf('vue').use('stylus-loader') */
@@ -1114,11 +1023,12 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('stylus').oneOf('normal-modules').use('extract-css-loader') */
+              /* config.module.rule('stylus').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('stylus').oneOf('normal-modules').use('css-loader') */
@@ -1137,12 +1047,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('stylus').oneOf('normal-modules').use('stylus-loader') */
@@ -1157,11 +1062,12 @@
           /* config.module.rule('stylus').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('stylus').oneOf('normal').use('extract-css-loader') */
+              /* config.module.rule('stylus').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.92.1/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/vue-style-loader@4.1.3/node_modules/vue-style-loader/index.js',
                 options: {
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               /* config.module.rule('stylus').oneOf('normal').use('css-loader') */
@@ -1180,12 +1086,7 @@
               {
                 loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/postcss-loader@6.2.1_h7ybz3vosd2sabh3expkxy422u/node_modules/postcss-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false,
-                  postcssOptions: {
-                    plugins: [
-                      function () { /* omitted long function */ }
-                    ]
-                  }
+                  sourceMap: false
                 }
               },
               /* config.module.rule('stylus').oneOf('normal').use('stylus-loader') */
@@ -1212,7 +1113,7 @@
             options: {
               cacheCompression: false,
               cacheDirectory: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.cache/babel-loader',
-              cacheIdentifier: '08fc14bc'
+              cacheIdentifier: '4ac4d2f6'
             }
           }
         ]
@@ -1227,7 +1128,7 @@
           },
           /* config.module.rule('ts').use('ts-loader') */
           {
-            loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/ts-loader@9.5.1_bytkbgm6m5azloznfowfigw324/node_modules/ts-loader/index.js',
+            loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/ts-loader@9.5.1_arkiysx55i4hjw3xaye4hs5osq/node_modules/ts-loader/index.js',
             options: {
               transpileOnly: true,
               appendTsSuffixTo: [
@@ -1248,7 +1149,7 @@
           },
           /* config.module.rule('tsx').use('ts-loader') */
           {
-            loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/ts-loader@9.5.1_bytkbgm6m5azloznfowfigw324/node_modules/ts-loader/index.js',
+            loader: '/Users/aofeizhu/bpmn-project/vue_component_core/node_modules/.pnpm/ts-loader@9.5.1_arkiysx55i4hjw3xaye4hs5osq/node_modules/ts-loader/index.js',
             options: {
               transpileOnly: true,
               happyPackMode: false,
@@ -1317,21 +1218,6 @@
           parallel: true,
           extractComments: false
         }
-      ),
-      /* config.optimization.minimizer('css') */
-      new CssMinimizerPlugin(
-        {
-          parallel: true,
-          minimizerOptions: {
-            preset: [
-              'default',
-              {
-                mergeLonghand: false,
-                cssDeclarationSorter: false
-              }
-            ]
-          }
-        }
       )
     ]
   },
@@ -1343,7 +1229,7 @@
       {
         'process.env': {
           NODE_ENV: '"development"',
-          BASE_URL: '"../"'
+          BASE_URL: '""'
         }
       }
     ),
@@ -1358,13 +1244,6 @@
         additionalFormatters: [
           function () { /* omitted long function */ }
         ]
-      }
-    ),
-    /* config.plugin('extract-css') */
-    new MiniCssExtractPlugin(
-      {
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].css'
       }
     ),
     /* config.plugin('html') */
@@ -1414,15 +1293,26 @@
           }
         }
       }
-    )
+    ),
+    {
+      options: {
+        filename: 'css/main.css',
+        ignoreOrder: false,
+        experimentalUseImportModule: undefined,
+        runtime: true,
+        chunkFilename: 'css/[id].main.css'
+      },
+      runtimeOptions: {
+        insert: undefined,
+        linkType: 'text/css',
+        attributes: undefined
+      }
+    }
   ],
   entry: {
     app: [
       './src/main.ts'
     ]
   },
-  externals: {
-    pinia: 'pinia',
-    'ant-design-vue': 'ant-design-vue'
-  }
+  externals: {}
 }

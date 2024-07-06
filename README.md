@@ -16,12 +16,11 @@
 
 ## 使用
     引入组件
-    import CloudpivotBpmn from'../../../dist/index';
+    import CloudpivotBpmn from'/lib/bpmn';
     引入样式
-    @import '../../../dist/css/main.css';
+    @import '/lib/css/main.css';
 
 ### dome 查看
-    cd ./example
 
     pnpm i
 
@@ -34,3 +33,10 @@
 ### 最终效果
 
 ![alt text](image.png)
+
+
+## Todo
+
+ [] 替换elment-ui
+ [] 替换ant-vue @h3/antd
+ [] 添加面板属性
